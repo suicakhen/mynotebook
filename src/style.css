@@ -252,12 +252,14 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 2rem;
+  align-items: center;
+  gap: 24px;
+  margin: 3rem auto;
 }
 
 .pagination button {
-  width: 28px;
-  height: 28px;
+  /* width: 28px;
+  height: 28px; */
   font-family: inherit;
   font-weight: 600;
   font-size: 16px;
@@ -267,7 +269,9 @@ ul {
   transition: all 0.3s ease;
   background: transparent;
   color: #eee;
-  border-color: #eee;
+
+  padding: 6px 12px;
+  border-image: linear-gradient(135deg, #3b82f6, #16a34a, #ef4444, #eab308) 1;
 }
 
 .pagination button.active {

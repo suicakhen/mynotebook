@@ -2,33 +2,57 @@ import React, { useContext } from 'react'
 import { NoteContext } from './App'
 import './style.css'
 
-const Pagination = () => {
-  const {
-    totalPosts,
-    postsPerPage,
-    setCurrentPage,
-    currentPage,
-    categoryFilter,
-  } = useContext(NoteContext)
-  const totalPages = Math.ceil(totalPosts / postsPerPage)
-  const pages = Array.from({ length: totalPages }, (_, index) => index + 1)
+// const Pagination = () => {
+//   const {
+//     totalPosts,
+//     postsPerPage,
+//     setCurrentPage,
+//     currentPage,
+//     categoryFilter,
+//   } = useContext(NoteContext)
+//   const totalPages = Math.ceil(totalPosts / postsPerPage)
+//   const pages = Array.from({ length: totalPages }, (_, index) => index + 1)
 
-  if (totalPages > currentPage)
-    return (
-      <div className="pagination">
-        {pages.map((page, index) => {
-          return (
-            <button
-              key={index}
-              onClick={() => setCurrentPage(page)}
-              className={page === currentPage ? 'active' : ''}
-            >
-              {page}
-            </button>
-          )
-        })}
-      </div>
-    )
+//   if (totalPages > currentPage)
+//     return (
+//       <div className="pagination">
+//         {pages.map((page, index) => {
+//           return (
+//             <button
+//               key={index}
+//               onClick={() => setCurrentPage(page)}
+//               className={page === currentPage ? 'active' : ''}
+//             >
+//               {page}
+//             </button>
+//           )
+//         })}
+//       </div>
+//     )
+// }
+
+const Pagination = () => {
+  const { totalPages, onPageChange, currentPage } = useContext(NoteContext)
+
+  const handlePrevClick = () => {
+    onPageChange(currentPage - 1)
+  }
+
+  const handleNextClick = () => {
+    onPageChange(currentPage + 1)
+  }
+
+  return (
+    <div className="pagination">
+      <button onClick={handlePrevClick} disabled={currentPage === 1}>
+        Prev
+      </button>
+      <span>{currentPage}</span> of <span>{totalPages}</span>
+      <button onClick={handleNextClick} disabled={currentPage === totalPages}>
+        Next
+      </button>
+    </div>
+  )
 }
 
 export default Pagination

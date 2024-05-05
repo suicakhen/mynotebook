@@ -83,10 +83,16 @@ function App() {
     if (!error) setNotes((notes) => notes.filter((note) => id !== note.id))
   }
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+    // You may also fetch data for the new page here
+  }
+
   const lastPostIndex = currentPage * postsPerPage
   const firstPostIndex = lastPostIndex - postsPerPage
   const currentPosts = notes.slice(firstPostIndex, lastPostIndex)
   const totalPosts = notes.length
+  const totalPages = Math.ceil(totalPosts / postsPerPage)
 
   return (
     <NoteContext.Provider
@@ -100,6 +106,9 @@ function App() {
         notes: currentPosts,
         onDeletednote: handleDelete,
         totalPosts,
+        totalPages,
+        currentPage,
+        onPageChange: handlePageChange,
       }}
     >
       <>

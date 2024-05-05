@@ -77,7 +77,7 @@ function Note({
       </button>
 
       <div className="note_action">
-        <p style={{ color: '#7E7E7E', fontSize: '16px' }}>
+        <p style={{ color: '#ADD8E6', fontSize: '14px' }}>
           Title/source:
           <span>
             {isValidHttpUrl(note.source) ? (
@@ -90,7 +90,7 @@ function Note({
                 {note.source}
               </a>
             ) : (
-              <span className="title">{note.source}</span>
+              <span className="title">{note.source} </span>
             )}
           </span>
         </p>
