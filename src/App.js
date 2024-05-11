@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import supabase from './supabase'
 import './style.css'
 import CategoryFilter from './CategoryFilter'
@@ -37,8 +37,10 @@ function App() {
   const [notes, setNotes] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [currentCategory, setCurrentCategory] = useState('all')
+  // eslint-disable-next-line
   const [isUpdating, setIsUpdating] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
+  // eslint-disable-next-line
   const [postsPerPage, setPostsPerPage] = useState(6)
 
   // Load this only for the first load but not everytime the page rendering.
