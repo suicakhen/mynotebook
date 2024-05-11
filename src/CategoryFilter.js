@@ -2,7 +2,13 @@ import { useContext } from 'react'
 import { NoteContext } from './App'
 // CATEGORY OF NOTE
 export default function CategoryFilter() {
-  const { setCurrentCategory, categories } = useContext(NoteContext)
+  const { setCurrentCategory, categories, onPageChange } =
+    useContext(NoteContext)
+
+  function handleCategoryChange(catName) {
+    setCurrentCategory(catName)
+    onPageChange(1)
+  }
   return (
     <aside>
       <ul className="category-box">
@@ -20,7 +26,7 @@ export default function CategoryFilter() {
             <button
               className="btn btn-category"
               style={{ backgroundColor: cat.color }}
-              onClick={() => setCurrentCategory(cat.name)}
+              onClick={() => handleCategoryChange(cat.name)}
             >
               {cat.name}
             </button>

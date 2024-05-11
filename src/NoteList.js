@@ -35,7 +35,7 @@ export default function NotesList() {
           />
         ))}
       </ul>
-      <p>There are {totalPosts} in the list. Add more!</p>
+      <p>There are {totalPosts} posts in the list. Add more!</p>
     </section>
   )
 }
@@ -77,7 +77,7 @@ function Note({
       </button>
 
       <div className="note_action">
-        <p style={{ color: '#ADD8E6', fontSize: '14px' }}>
+        <p style={{ color: '#ADD8E6', fontSize: '14px', paddingRight: '4px' }}>
           Title/source:
           <span>
             {isValidHttpUrl(note.source) ? (

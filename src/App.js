@@ -18,7 +18,7 @@ const CATEGORIES = [
   { name: 'PE', color: '#f97316' },
   { name: 'Sports', color: '#8b5cf6' },
 ]
-
+// VALIDATE URL FOR SOURCES
 function isValidHttpUrl(string) {
   let url
   try {
@@ -85,7 +85,6 @@ function App() {
 
   const handlePageChange = (page) => {
     setCurrentPage(page)
-    // You may also fetch data for the new page here
   }
 
   const lastPostIndex = currentPage * postsPerPage
@@ -116,9 +115,11 @@ function App() {
         {showForm ? <NewForm /> : null}
         <main className="main">
           <CategoryFilter />
-          {isLoading ? <Loading /> : <NotesList />}
+          <div>
+            {isLoading ? <Loading /> : <NotesList />}
+            <Pagination />
+          </div>
         </main>
-        <Pagination />
       </>
     </NoteContext.Provider>
   )
